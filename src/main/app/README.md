@@ -68,7 +68,7 @@ First, define a single `entities` property, which will consist of an array of `e
 
 	- `Edm.DateTime`: The DateTime type represents date and time with values ranging from 12:00:00 midnight, January 1, 1753 A.D. through 11:59:59 P.M, December 31, 9999 A.D..
 
-	- `Edm.Time`: The Time type represents the time of day with values ranging from 0:00:00.x to 23:59:59.y, where x and y depend upon the **precision**.
+	- `Edm.Time`: The Time type represents the time of day with values ranging from 0:00:00.x to 23:59:59.y, where x and y depend upon the `precision`.
 
 	- `Edm.DateTimeOffset`: The DateTimeOffset type represents date and time as an Offset in minutes from GMT, with values ranging from 12:00:00 midnight, January 1, 1753 A.D. through 11:59:59 P.M, December 9999 A.D.
 
@@ -76,7 +76,7 @@ First, define a single `entities` property, which will consist of an array of `e
 	and scale can be specified using optional `precision` and `scale` properties. This type can describe a
 	numeric value ranging from negative 10^255 + 1 to positive 10^255 -1.
 
-	- `Edm.String`: The String type represents fixed or variable length character data.
+	- `Edm.String`: The String type represents fixed or variable length character data. When this type is used it is **mandatory** to include as well the `maxLength` and `fixedLength` properties.
 
 	- `Edm.Boolean`: The Boolean data type is used to represent the mathematical concept of binary valued logic. There are no applicable facets for this type.
 
@@ -113,7 +113,7 @@ First, define a single `entities` property, which will consist of an array of `e
 
 -	`precision`: When this property is used in an **Edm.DateTime**, an **Edm.Time** or an **Edm.DateTimeOffset** this indicates the degree of granularity in fractions of a second, based on the number of decimal places supported. For example, a precision of 3 means the granularity supported is milliseconds. When this is used in an **Edm.Decimal**, this specifies the maximum number of decimal digits that an instance of can have, both to the left and to the right of the decimal point. Possible values for are 1, 2, or 3. This is optional.
 
--	`scale`: This is a positive integer that specifies the maximum number of decimal digits to the right of the decimal point that an instance of this type can have. The Scale value can range from 0 through the specified **precision** value. The default Scale is 0. This is optional for **Edm.Decimal** types.
+-	`scale`: This is a positive integer that specifies the maximum number of decimal digits to the right of the decimal point that an instance of this type can have. The Scale value can range from 0 through the specified `precision` value. The default Scale is 0. This is optional for **Edm.Decimal** types.
 
 -	`maxLength`: This is **mandatory** for **Edm.String** types. It specifies the maximum length that the instance can have. It can range from 0 to (2^31)-1.
 
