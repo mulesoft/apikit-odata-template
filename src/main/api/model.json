@@ -3,7 +3,7 @@
     {
       "entity": {
         "name": "Employee",
-        "remoteName": "Employees",
+        "remoteName": "Employee",
         "properties": [
           {
             "field": {
