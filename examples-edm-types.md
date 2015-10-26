@@ -20,7 +20,7 @@ Examples of EDM Types
 {
   "field": {
       "type": "Edm.Int64",
-      "name": "name",
+      "name": "id",
       "nullable": true,
       "key": false
   }
