@@ -97,8 +97,6 @@ First, define a single `entities` property, which will consist of an array of `e
 
 	- `Edm.SByte`: The SByte type represents a signed 8-bit integer value.
 
-	- `Edm.Binary`: The binary data type is used to represent fixed or variable length binary data.
-
 -	`name`: The name of the field. This is **mandatory** for **all types**.
 
 -	`nullable`: Whether this field is nullable or not. This is **mandatory** for **all types**.
