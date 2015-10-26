@@ -103,7 +103,7 @@ Examples of EDM Types
 }
 ```
 
-### DateTime (millisecond prescision)
+### DateTime (millisecond precision)
 
 ```javascript
 {
