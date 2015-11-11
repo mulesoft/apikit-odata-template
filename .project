@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>dgw-template</name>
+	<name>test-drive</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -22,8 +22,8 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.mule.tooling.maven.mavenNature</nature>
-		<nature>org.mule.tooling.core.muleNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.mule.tooling.core.muleNature</nature>
+		<nature>org.mule.tooling.maven.mavenNature</nature>
 	</natures>
 </projectDescription>
