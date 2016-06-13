@@ -1,282 +1,163 @@
-Examples of EDM Types
-=====================
+# OData Model Definition w/ RAML Types
 
-### Integer (32-bit)
+The model must be defined as a `RAML Library`, where each `DataType` represents an `EntityModel`, like:
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Int32",
-      "name": "id",
-      "nullable": false,
-      "key": true,
-  }
-}
+### Model
+
+```raml
+#%RAML 1.0 Library
+uses:
+  odata: !include libraries/odata.raml
+
+types:
+  Employee:
+    properties:
+      id:
+        type: integer
+        (odata.key)
+      name:
+        type: string
 ```
 
-### Integer (64-bit)
+You must annotate at least one of the properties on each `Entity` by using the annotation `(odata.key)`.
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Int64",
-      "name": "id",
-      "nullable": true,
-      "key": false
-  }
-}
+The following annotations are optional for each property:
+
+- `(odata.nullable)`: bool
+- `(odata.precision)`: int
+- `(odata.scale)`: int
+
+There's an optional `(odata.remote)` annotation for the `Entity`'s, that allow you to provide the name of the `Entity` in the remote data source.
+
+```raml
+types:
+  Employee:
+  (odata.remote): SAP_VBAK
+    properties:
+      ...
 ```
 
-### String / Varchar (utf-8)
+# EDM Types
 
-```javascript
-{
-  "field": {
-      "type": "Edm.String",
-      "name": "Name",
-      "nullable": true,
-      "key": false,
-      "maxLength": "255",
-      "fixedLength": false
-  }
-}
+This is a list of all the supported EDM types, and how to declare them using RAML types.
+
+### Edm.String
+
+The String type represents fixed or variable length character data.
+
+```
+type: string
 ```
 
-### String / Varchar (with default value)
+### Edm.Boolean
 
-```javascript
-{
-  "field": {
-      "type": "Edm.String",
-      "name": "Document",
-      "nullable": true,
-      "key": false,
-      "maxLength": "255",
-      "fixedLength": false,
-      "defaultValue": "Untitled"
-  }
-}
+The Boolean data type is used to represent the mathematical concept of binary valued logic. There are no applicable facets for this type.
+
+```
+type: boolean
 ```
 
-### String / Varchar (fixed length)
+### Edm.Double
 
-```javascript
-{
-  "field": {
-      "type": "Edm.String",
-      "name": "Color",
-      "nullable": true,
-      "key": false,
-      "maxLength": "6",
-      "fixedLength": true
-  }
-}
+The Double type represents a floating point number with 15 digits precision that can represent values with approximate range of ± 2.23e -308 through ± 1.79e +308.
+
+```
+type: number
 ```
 
-### String / Varchar (ascii with non-stardard collation)
+### Edm.Single
 
-```javascript
-{
-  "field": {
-      "type": "Edm.String",
-      "name": "AsciiArt",
-      "nullable": true,
-      "key": false,
-      "maxLength": "5",
-      "fixedLength": true,
-      "unicode": false,
-      "collation": "1252LATIN1"
-  }
-}
+The Single type represents a floating point number with 7 digits precision that can represent values with approximate range of ± 1.18e -38 through ± 3.40e +38
+
 ```
-
-### Boolean
-
-```javascript
-{
-  "field": {
-      "type": "Edm.Boolean",
-      "name": "Active",
-      "nullable": true,
-      "key": false
-  }
-}
-```
-
-### DateTime (millisecond precision)
-
-```javascript
-{
-  "field": {
-      "type": "Edm.DateTime",
-      "name": "Edited",
-      "nullable": true,
-      "key": false,
-      "precision": 3
-  }
-}
-```
-
-### Float (double precision)
-
-```javascript
-{
-  "field": {
-      "type": "Edm.Double",
-      "name": "Price",
-      "nullable": true,
-      "key": false
-  }
-}
-```
-
-### Float (single precision)
-
-```javascript
-{
-  "field": {
-      "type": "Edm.Single",
-      "name": "Price",
-      "nullable": true,
-      "key": false
-  }
-}
-```
-
-### Float (fixed scale and precision)
-
-```javascript
-{
-  "field": {
-      "type": "Edm.Decimal",
-      "name": "Price",
-      "nullable": true,
-      "key": false,
-      "precision": 3,
-      "scale": 3
-  }
-}
+type: number
+format: float
 ```
 
 ### Binary
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Binary",
-      "name": "File",
-      "nullable": true,
-      "key": false,
-      "maxLength": "1024",
-      "fixedLength": false
-  }
-}
+The binary data type is used to represent fixed or variable length binary data.
+
+```
+type: file
 ```
 
-### Binary (fixed length)
+### DateTime
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Binary",
-      "name": "Flags",
-      "nullable": true,
-      "key": false,
-      "maxLength": "16",
-      "fixedLength": true
-  }
-}
+The DateTime type represents date and time with values ranging from 12:00:00 midnight, January 1, 1753 A.D. through 11:59:59 P.M, December 31, 9999 A.D..
+
+```
+type: date
 ```
 
-### Time
+### Edm.Int32
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Time",
-      "name": "AlarmTime",
-      "nullable": true,
-      "key": false
-  }
-}
+The Int32 type represents a signed 32-bit integer value.
+
+```
+type: integer
 ```
 
-### DateTimeOffset
+### Edm.Int64
 
-```javascript
-{
-  "field": {
-      "type": "Edm.DateTimeOffset",
-      "name": "ETA",
-      "nullable": true,
-      "key": false
-  }
-}
+The Int64 type represents a signed 64-bit integer value.
+
+```
+type: integer
+format: int64
 ```
 
-### Integer (8-bit unsigned)
+### Edm.Int16
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Byte",
-      "name": "Order",
-      "nullable": true,
-      "key": false
-  }
-}
+The Int16 type represents a signed 16-bit integer value.
+
+```
+type: integer
+format: int16
 ```
 
-### Integer (8-bit signed)
+### Edm.Byte
 
-```javascript
-{
-  "field": {
-      "type": "Edm.SByte",
-      "name": "Offset",
-      "nullable": true,
-      "key": false
-  }
-}
+The Byte type represents an unsigned 8-bit integer value.
+
+```
+type: integer
+format: int8
 ```
 
-### Integer (16-bit)
+### Edm.Decimal
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Int16",
-      "name": "Population",
-      "nullable": true,
-      "key": false
-  }
-}
+The Decimal type represents numeric values with fixed precision and scale. The required precision and scale can be specified using optional `precision` and `scale` properties. This type can describe a numeric value ranging from negative 10^255 + 1 to positive 10^255 -1.
+
+```
+type: number
+(odata.precision): 3
+(odata.scale): 3
 ```
 
-### Global Unique Identifier
+### Edm.Guid
 
-```javascript
-{
-  "field": {
-      "type": "Edm.Guid",
-      "name": "id",
-      "nullable": true,
-      "key": false
-  }
-}
+This Guid type, as specified in [RFC4122], represents a 16-byte (128-bit) unique identifier value.
+
+```
+type: string
+(odata.type): guid
 ```
 
-### Optional Documentation Properties (sample & description)
+### Edm.Time
 
-```javascript
-{
-  "field": {
-      "type": "Edm.String",
-      "name": "Name",
-      "nullable": true,
-      "key": false,
-      "sample": "John Doe",
-      "description": "This is the person's name"
-  }
-}
+The Time type represents the time of day with values ranging from 0:00:00.x to 23:59:59.y, where x and y depend upon the `precision`.
+
+```
+type: date
+(odata.type): time
+```
+
+### Edm.DateTimeOffset
+
+The DateTimeOffset type represents date and time as an Offset in minutes from GMT, with values ranging from 12:00:00 midnight, January 1, 1753 A.D. through 11:59:59 P.M, December 9999 A.D.
+
+```
+type: date
+(odata.type): offset
 ```

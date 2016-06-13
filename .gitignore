@@ -46,3 +46,8 @@ local.properties
 flows/
 target/
 **/*.mflow
+.project
+
+.classpath
+
+.project
