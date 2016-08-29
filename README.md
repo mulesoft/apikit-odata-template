@@ -17,13 +17,7 @@ Note that all the required dependencies have been already included, and within y
 
 # Model Definition <a name="model"/>
 
-The model described in your `odata.raml` file must follow this structure:
-
-### Model
-
-The model must be defined as a `RAML Library`, where each `DataType` represents an `EntityModel`, like:
-
-### Model
+The model described in your `odata.raml` file must be defined as a `RAML Library`, where each `DataType` represents an `EntityModel`, like:
 
 ```raml
 #%RAML 1.0 Library
