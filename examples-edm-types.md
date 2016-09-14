@@ -74,7 +74,7 @@ type: number
 format: float
 ```
 
-### Binary
+### Edm.Binary
 
 The binary data type is used to represent fixed or variable length binary data.
 
@@ -82,7 +82,7 @@ The binary data type is used to represent fixed or variable length binary data.
 type: file
 ```
 
-### DateTime
+### Edm.DateTime
 
 The DateTime type represents date and time with values ranging from 12:00:00 midnight, January 1, 1753 A.D. through 11:59:59 P.M, December 31, 9999 A.D..
 
